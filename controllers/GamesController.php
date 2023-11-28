@@ -68,10 +68,10 @@ class GamesController extends Controller
                 } else {
                     // Обработка ошибок при сохранении игры
                     $response = $this->response;
-                    $response->statusCode = 500;
+                    $response->statusCode = 400;
                     $response->data = [
                         'error' => [
-                            'code' => 500,
+                            'code' => 400,
                             'message' => 'Ошибка сохранения игры',
                             'errors' => $game->getErrors(),
                         ],

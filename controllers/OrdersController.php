@@ -36,14 +36,13 @@ class OrdersController extends Controller
                     ];
                     return $response;
                 } catch (\Exception $err) {
-                    // Откат транзакции в случае ошибки
                     $transaction->rollBack();
 
                     Yii::error('Error booking car: ' . $err->getMessage(), 'app\controllers\GamesController');
 
                     $response = $this->response;
                     $response->data = ['error' => 'Error games: ' . $err->getMessage()];
-                    $response->statusCode = 500;
+                    $response->statusCode = 400;
                     return $response;
                 }
             } else {
