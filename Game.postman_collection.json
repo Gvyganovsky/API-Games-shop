@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "18443091-479a-459c-9124-e794377de0a0",
+		"name": "Game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24068328",
+		"_collection_link": "https://red-astronaut-628775.postman.co/workspace/Team-Workspace~c6803bb3-def0-45be-8421-c8e36f16632f/collection/24068328-18443091-479a-459c-9124-e794377de0a0?action=share&source=collection_link&creator=24068328"
+	},
+	"item": [
+		{
+			"name": "Регистрация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "zzzz@zz.zu",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123123123dD@",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/register",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вход",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "zzzz@zz.zu",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123123123dD@",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/login",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "zzzz@zz.zu",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123123123dD@",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить список всех игр",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/games",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить одну игру",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/21",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление игры из корзины",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/orders/delete/21",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"orders",
+						"delete",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление игры в систему",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "game_name",
+							"value": "фыв",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "category_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "asd",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "asdf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/add",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление игры из системы",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/delete/37",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"delete",
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение данных об игре ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "game_name",
+							"value": "zzzzzzzz",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/update/38",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"update",
+						"38"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение данных пользователя",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/user/21",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"user",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получения данных всех пользователей",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/users",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр корзины",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/user/orders/1",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"user",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление игры в систему",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": "Decore.png"
+						},
+						{
+							"key": "game_name",
+							"value": "asdf",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "66.66",
+							"type": "text"
+						},
+						{
+							"key": "category_id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/add",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
