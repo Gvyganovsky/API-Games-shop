@@ -28,21 +28,24 @@ class OrdersController extends Controller
                     $transaction->commit();
 
                     $response = $this->response;
+                    $response->statusCode = 200;
                     $response->data = [
-                        'success' => [
-                            'code' => 200,
-                            'message' => 'Игра куплена',
-                        ],
+                        'message' => 'Игра куплена',
                     ];
                     return $response;
                 } catch (\Exception $err) {
                     $transaction->rollBack();
 
-                    Yii::error('Error booking car: ' . $err->getMessage(), 'app\controllers\GamesController');
+                    Yii::error('Error buying game: ' . $err->getMessage(), 'app\controllers\OrdersController');
 
                     $response = $this->response;
-                    $response->data = ['error' => 'Error games: ' . $err->getMessage()];
                     $response->statusCode = 400;
+                    $response->data = [
+                        'error' => [
+                            'code' => 400,
+                            'message' => 'Ошибка при покупке игры: ' . $err->getMessage(),
+                        ],
+                    ];
                     return $response;
                 }
             } else {
@@ -65,22 +68,21 @@ class OrdersController extends Controller
                     'message' => 'Пользователь не зарегистрирован',
                 ],
             ];
+            return $response;
         }
     }
+
     public function actionDelete($order_id)
     {
         $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
         if ($user !== null) {
             $order = Orders::findOne($order_id);
             if ($order !== null) {
-                $order -> delete();
+                $order->delete();
                 $response = $this->response;
-                $response->statusCode = 404;
+                $response->statusCode = 200;
                 $response->data = [
-                    'success' => [
-                        'code' => 200,
-                        'message' => 'Игра успешно удалена!',
-                    ],
+                    'message' => 'Игра успешно удалена!',
                 ];
                 return $response;
             } else {
@@ -103,10 +105,10 @@ class OrdersController extends Controller
                     'message' => 'Пользователь не зарегистрирован',
                 ],
             ];
+            return $response;
         }
     }
 
-    
     private function findUserByToken($token)
     {
         return Users::findOne(['token' => $token]);

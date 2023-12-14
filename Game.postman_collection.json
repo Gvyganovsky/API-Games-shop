@@ -137,7 +137,11 @@
 			"response": []
 		},
 		{
+<<<<<<< HEAD
+			"name": "Купить видеоигру",
+=======
 			"name": "Добавление игры в корзину (id игр начинается с 21)",
+>>>>>>> master
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -201,6 +205,70 @@
 			"response": []
 		},
 		{
+<<<<<<< HEAD
+			"name": "Добавление игры в систему",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "game_name",
+							"value": "фыв",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "category_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "asd",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "asdf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/add",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+=======
+>>>>>>> master
 			"name": "Удаление игры из системы",
 			"request": {
 				"auth": {
@@ -338,6 +406,14 @@
 		{
 			"name": "Просмотр корзины",
 			"request": {
+<<<<<<< HEAD
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "Просмотр корзины",
+					"host": [
+						"Просмотр корзины"
+=======
 				"auth": {
 					"type": "bearer",
 					"bearer": [
@@ -418,6 +494,7 @@
 						"api",
 						"game",
 						"add"
+>>>>>>> master
 					]
 				}
 			},
