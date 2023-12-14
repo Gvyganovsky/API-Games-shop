@@ -10,13 +10,15 @@ use yii\web\UploadedFile;
 class GamesController extends Controller
 {
     public $modelClass = 'app\models\Games';
+    
     public function actionGames()
     {
         $games = Games::find()->all();
         if ($games !== null) {
             $response = $this->response;
-            $response->statusCode = 201;
+            $response->statusCode = 200;
             $response->data = $games;
+            return $response;
         } else {
             $response = $this->response;
             $response->statusCode = 404;
@@ -36,9 +38,8 @@ class GamesController extends Controller
         if ($game !== null) {
             $response = $this->response;
             $response->statusCode = 200;
-            $response->data = [
-                $game,
-            ];
+            $response->data = [$game];
+            return $response;
         } else {
             $response = $this->response;
             $response->statusCode = 404;
@@ -46,6 +47,43 @@ class GamesController extends Controller
                 'error' => [
                     'code' => 404,
                     'message' => 'Game not found',
+                ],
+            ];
+            return $response;
+        }
+    }
+
+    public function actionDelete($id_game)
+    {
+        $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
+        if ($user !== null && $user->admin !== 0) {
+            $game = Games::findOne($id_game);
+            if ($game !== null) {
+                $game->delete();
+                $response = $this->response;
+                $response->statusCode = 200;
+                $response->data = [
+                    'message' => 'Игра успешно удалена!',
+                ];
+                return $response;
+            } else {
+                $response = $this->response;
+                $response->statusCode = 404;
+                $response->data = [
+                    'error' => [
+                        'code' => 404,
+                        'message' => 'Game not found',
+                    ],
+                ];
+                return $response;
+            }
+        } else {
+            $response = $this->response;
+            $response->statusCode = 401;
+            $response->data = [
+                'error' => [
+                    'code' => 401,
+                    'message' => 'Отсутствуют права администратора',
                 ],
             ];
             return $response;
@@ -129,67 +167,19 @@ class GamesController extends Controller
         }
     }
 
-
-
-
-
-
-    public function actionDelete($id_game)
-    {
-        $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
-        if ($user !== null && $user->admin !== 0) {
-            $game = Games::findOne($id_game);
-            if ($game !== null) {
-                $game->delete();
-                $response = $this->response;
-                $response->statusCode = 201;
-                $response->data = [
-                    'error' => [
-                        'code' => 201,
-                        'message' => 'Игра успешно удалена!',
-                    ],
-                ];
-                return $response;
-            } else {
-                $response = $this->response;
-                $response->statusCode = 404;
-                $response->data = [
-                    'error' => [
-                        'code' => 404,
-                        'message' => 'Game not found',
-                    ],
-                ];
-                return $response;
-            }
-        } else {
-            $response = $this->response;
-            $response->statusCode = 401;
-            $response->data = [
-                'error' => [
-                    'code' => 401,
-                    'message' => 'Отсутствуют права администратора',
-                ],
-            ];
-        }
-    }
-
     public function actionUpdate($id_game)
     {
         $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
         if ($user !== null && $user->admin !== 0) {
             $game = Games::findOne($id_game);
             if ($game !== null) {
-                ;
                 $game->load(Yii::$app->request->post(), '');
                 $game->save();
 
                 $response = $this->response;
-                $response->statusCode = 404;
+                $response->statusCode = 200;
                 $response->data = [
-                    'error' => [
-                        'code' => 201,
-                        'message' => 'Игра успешно изменена!',
-                    ],
+                    'message' => 'Игра успешно изменена!',
                 ];
                 return $response;
             } else {
@@ -212,6 +202,7 @@ class GamesController extends Controller
                     'message' => 'Отсутствуют права администратора',
                 ],
             ];
+            return $response;
         }
     }
 

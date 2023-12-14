@@ -19,7 +19,7 @@ class UserController extends Controller
 
         if ($registeredUser !== null) {
             $response = $this->response;
-            $response->statusCode = 204; // Успешная регистрация пользователя
+            $response->statusCode = 201; // Успешная регистрация пользователя
             return $response;
         } else {
             // Обработка специфических ошибок
@@ -59,7 +59,7 @@ class UserController extends Controller
 
         if ($loggedInUser !== null) {
             $response = $this->response;
-            $response->statusCode = 201;
+            $response->statusCode = 200;
             $response->data = [
                 'message' => 'Успешный вход в аккаунт',
                 'token' => $loggedInUser,
@@ -136,9 +136,9 @@ class UserController extends Controller
         $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
         $find_user = Users::find()->all();
         if ($user !== null && $user->admin !== 0) {
-            if ($find_user !== null) {
+            if (!empty($find_user)) {
                 $response = $this->response;
-                $response->statusCode = 201;
+                $response->statusCode = 200;
                 $response->data = $find_user;
             } else {
                 $response = $this->response;
@@ -153,7 +153,7 @@ class UserController extends Controller
             }
         } else {
             $response = $this->response;
-            $response->statusCode = 404;
+            $response->statusCode = 401;
             $response->data = [
                 'error' => [
                     'code' => 401,
@@ -188,10 +188,10 @@ class UserController extends Controller
             }
         } else {
             $response = $this->response;
-            $response->statusCode = 404;
+            $response->statusCode = 401;
             $response->data = [
                 'error' => [
-                    'code' => 404,
+                    'code' => 401,
                     'message' => 'Незарегистрированный пользователь',
                 ],
             ];
@@ -200,11 +200,8 @@ class UserController extends Controller
         return $response;
     }
 
-
     private function findUserByToken($token)
     {
         return Users::findOne(['token' => $token]);
     }
-
 }
-
