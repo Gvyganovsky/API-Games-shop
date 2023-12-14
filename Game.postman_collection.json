@@ -137,6 +137,38 @@
 			"response": []
 		},
 		{
+			"name": "Добавление игры в корзину (id игр начинается с 21)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/orders/add/21",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"orders",
+						"add",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Удаление игры из корзины",
 			"request": {
 				"auth": {
@@ -163,67 +195,6 @@
 						"orders",
 						"delete",
 						"21"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Добавление игры в систему",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "game_name",
-							"value": "фыв",
-							"type": "text"
-						},
-						{
-							"key": "price",
-							"value": "12",
-							"type": "text"
-						},
-						{
-							"key": "category_id",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "asd",
-							"type": "text"
-						},
-						{
-							"key": "image",
-							"value": "asdf",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/add",
-					"host": [
-						"k-viganovsky",
-						"xn--80ahdri7a",
-						"site"
-					],
-					"path": [
-						"api",
-						"game",
-						"add"
 					]
 				}
 			},

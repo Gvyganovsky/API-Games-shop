@@ -29,7 +29,7 @@ class OrdersController extends Controller
 
                     $response = $this->response;
                     $response->data = [
-                        'error' => [
+                        'success' => [
                             'code' => 200,
                             'message' => 'Игра куплена',
                         ],
@@ -77,8 +77,8 @@ class OrdersController extends Controller
                 $response = $this->response;
                 $response->statusCode = 404;
                 $response->data = [
-                    'error' => [
-                        'code' => 201,
+                    'success' => [
+                        'code' => 200,
                         'message' => 'Игра успешно удалена!',
                     ],
                 ];

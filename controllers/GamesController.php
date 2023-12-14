@@ -129,11 +129,6 @@ class GamesController extends Controller
         }
     }
     
-
-
-    
-
-
     public function actionDelete($id_game)
     {
         $user = $this->findUserByToken(str_replace('Bearer ', '', Yii::$app->request->headers->get('Authorization')));
@@ -144,11 +139,11 @@ class GamesController extends Controller
                 $response = $this->response;
                 $response->statusCode = 201;
                 $response->data = [
-                    'error' => [
-                        'code' => 201,
+                    'success' => [
+                        'code' => 200,
                         'message' => 'Игра успешно удалена!',
                     ],
-                ];
+                ];                
                 return $response;
             } else {
                 $response = $this->response;
@@ -186,8 +181,8 @@ class GamesController extends Controller
                 $response = $this->response;
                 $response->statusCode = 404;
                 $response->data = [
-                    'error' => [
-                        'code' => 201,
+                    'success' => [
+                        'code' => 200,
                         'message' => 'Игра успешно изменена!',
                     ],
                 ];
