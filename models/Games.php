@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+<<<<<<< HEAD
 
 /**
  * This is the model class for table "games".
@@ -20,6 +21,18 @@ use Yii;
 class Games extends \yii\db\ActiveRecord
 {
     /**
+=======
+use yii\web\UploadedFile;
+
+class Games extends \yii\db\ActiveRecord
+{
+    /**
+     * @var UploadedFile|null
+     */
+    public $imageFile;
+
+    /**
+>>>>>>> master
      * {@inheritdoc}
      */
     public static function tableName()
@@ -39,6 +52,10 @@ class Games extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['game_name'], 'string', 'max' => 100],
             [['image'], 'string', 'max' => 255],
+<<<<<<< HEAD
+=======
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
+>>>>>>> master
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id_category']],
         ];
     }

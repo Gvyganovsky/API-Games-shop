@@ -137,7 +137,11 @@
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "Купить видеоигру",
+=======
+			"name": "Добавление игры в корзину (id игр начинается с 21)",
+>>>>>>> master
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -201,6 +205,7 @@
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "Добавление игры в систему",
 			"request": {
 				"auth": {
@@ -262,6 +267,8 @@
 			"response": []
 		},
 		{
+=======
+>>>>>>> master
 			"name": "Удаление игры из системы",
 			"request": {
 				"auth": {
@@ -399,12 +406,95 @@
 		{
 			"name": "Просмотр корзины",
 			"request": {
+<<<<<<< HEAD
 				"method": "GET",
 				"header": [],
 				"url": {
 					"raw": "Просмотр корзины",
 					"host": [
 						"Просмотр корзины"
+=======
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/user/orders/1",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"user",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление игры в систему",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "-_N54ZI45qe34qMimXe_RHmYnddD0AdK",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": "Decore.png"
+						},
+						{
+							"key": "game_name",
+							"value": "asdf",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "66.66",
+							"type": "text"
+						},
+						{
+							"key": "category_id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "k-viganovsky.xn--80ahdri7a.site/api/game/add",
+					"host": [
+						"k-viganovsky",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"api",
+						"game",
+						"add"
+>>>>>>> master
 					]
 				}
 			},
