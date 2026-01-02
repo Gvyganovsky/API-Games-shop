@@ -46,7 +46,9 @@
 
 Установите зависимости с помощью Composer:
 
+```bash
 composer install
+```
 
 
 Настройте базу данных:
@@ -55,13 +57,15 @@ composer install
 
 Примените миграции для создания таблиц:
 
+```bash
 php yii migrate
-
+```
 
 Запустите сервер:
 
+```bash
 php yii serve
-
+```
 
 Теперь API будет доступен по адресу http://localhost:8080.
 
@@ -72,19 +76,22 @@ POST /api/user/create
 
 Запрос:
 
+```json
 {
   "email": "user@example.com",
   "password": "password123",
   "name": "John Doe"
 }
-
+```
 
 Ответ:
 
+```json
 {
   "status": 201,
   "message": "User successfully registered"
 }
+```
 
 Вход в систему
 
@@ -92,19 +99,22 @@ POST /api/user/login
 
 Запрос:
 
+```json
 {
   "email": "user@example.com",
   "password": "password123"
 }
-
+```
 
 Ответ:
 
+```json
 {
   "status": 200,
   "message": "Login successful",
   "token": "your_generated_token"
 }
+```
 
 Получить информацию о пользователе
 
@@ -117,6 +127,7 @@ Authorization: Bearer your_generated_token
 
 Ответ:
 
+```json
 {
   "status": 200,
   "user": {
@@ -125,6 +136,7 @@ Authorization: Bearer your_generated_token
     "name": "John Doe"
   }
 }
+```
 
 Получить все заказы пользователя
 
@@ -132,6 +144,7 @@ GET /api/user/orders/{id_user}
 
 Ответ:
 
+```json
 {
   "status": 200,
   "orders": [
@@ -142,6 +155,7 @@ GET /api/user/orders/{id_user}
     }
   ]
 }
+```
 
 Создание заказа
 
@@ -149,17 +163,20 @@ POST /api/orders/add/{id_game}
 
 Запрос:
 
+```json
 {
   "game_id": 5
 }
-
+```
 
 Ответ:
 
+```json
 {
   "status": 200,
   "message": "Game successfully purchased"
 }
+```
 
 Удаление заказа
 
@@ -167,10 +184,12 @@ DELETE /api/orders/delete/{order_id}
 
 Ответ:
 
+```json
 {
   "status": 200,
   "message": "Order successfully deleted"
 }
+```
 
 Логирование и ошибки
 
